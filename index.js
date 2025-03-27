@@ -208,7 +208,7 @@ const sendNegativeValuesToTelegram = async (negativeValues) => {
 let isFetching = false;
 
 import cron from "node-cron";
-cron.schedule("45 * * * *", async () => {
+cron.schedule("30 * * * *", async () => {
     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
 
     await fetchAllFundingRates();
