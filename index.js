@@ -215,7 +215,7 @@ cron.schedule("45 * * * *", async () => {
     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
 
     await fetchAllFundingRates();
-    const negativeValues = fetchedData.filter(item => item.value <= -0);
+    const negativeValues = fetchedData.filter(item => item.value <= -1);
     await sendNegativeValuesToTelegram(negativeValues);
 
     console.log("✅ Đã gửi dữ liệu!");
@@ -237,6 +237,6 @@ cron.schedule("45 * * * *", async () => {
 
 (async () => {
     await fetchAllFundingRates();
-    const negativeValues = fetchedData.filter(item => item.value <= -0);  // Lọc dữ liệu
+    const negativeValues = fetchedData.filter(item => item.value <= -1);  // Lọc dữ liệu
     sendNegativeValuesToTelegram(negativeValues);
 })();
