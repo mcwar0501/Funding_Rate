@@ -189,7 +189,7 @@ const saveSentData = (sentData) => {
 // };
 
 // Lên lịch chạy lúc 00:00 mỗi ngày
-cron.schedule("32 19 * * *", () => {  // 16h30 UTC = 23h30 VN
+cron.schedule("45 19 * * *", () => {  // 16h30 UTC = 23h30 VN
     console.log("🕦 Xóa dữ liệu cũ lúc", new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }));
     cleanOldSentData(sentData);
     console.log("✅ Đã xóa dữ liệu!");
@@ -235,11 +235,11 @@ let isFetching = false;
 
 // cron.schedule("45 * * * *", async () => {
 //     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
-//
+
 //     await fetchAllFundingRates();
 //     const negativeValues = fetchedData.filter(item => item.value <= -0);
 //     await sendNegativeValuesToTelegram(negativeValues);
-//
+
 //     console.log("✅ Đã gửi dữ liệu!");
 // });
 
