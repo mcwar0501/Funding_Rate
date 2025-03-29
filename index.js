@@ -181,7 +181,7 @@ const cleanOldSentData = (sentData) => {
 
     // Lấy timestamp của 20:35 hôm nay
     const eveningToday = new Date();
-    eveningToday.setHours(21, 10, 0, 0);
+    eveningToday.setHours(7, 0, 0, 0);
     const eveningTimestamp = eveningToday.getTime();
 
     // Nếu hiện tại đã qua 20:35, thì vẫn giữ 20:35 hôm nay
@@ -269,31 +269,31 @@ const sendNegativeValuesToTelegram = async (negativeValues) => {
 
 let isFetching = false;
 
-// cron.schedule("45 * * * *", async () => {
-//     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
-
-//     await fetchAllFundingRates();
-//     const negativeValues = fetchedData.filter(item => item.value <= -0);
-//     await sendNegativeValuesToTelegram(negativeValues);
-
-//     console.log("✅ Đã gửi dữ liệu!");
-// });
-
-
-cron.schedule("*/2 * * * *", async () => {
+cron.schedule("45 * * * *", async () => {
     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
 
     await fetchAllFundingRates();
-    const negativeValues = fetchedData.filter(item => item.value <= -0.5);
+    const negativeValues = fetchedData.filter(item => item.value <= -1);
     await sendNegativeValuesToTelegram(negativeValues);
 
     console.log("✅ Đã gửi dữ liệu!");
 });
 
+//
+// cron.schedule("*/2 * * * *", async () => {
+//     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
+//
+//     await fetchAllFundingRates();
+//     const negativeValues = fetchedData.filter(item => item.value <= -1);
+//     await sendNegativeValuesToTelegram(negativeValues);
+//
+//     console.log("✅ Đã gửi dữ liệu!");
+// });
+
 
 
 (async () => {
     await fetchAllFundingRates();
-    const negativeValues = fetchedData.filter(item => item.value <= -0.5);  // Lọc dữ liệu
+    const negativeValues = fetchedData.filter(item => item.value <= -1);  // Lọc dữ liệu
     sendNegativeValuesToTelegram(negativeValues);
 })();
