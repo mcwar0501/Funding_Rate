@@ -1,7 +1,7 @@
 import fs from 'fs';
 import cron from "node-cron";
 
-const API_KEY = "ba6ebabc-de07-4d7e-ae25-fd04f76ed0b6";  // Thay API Key của bạn
+const API_KEY = "a9bd3851-2121-4c5d-be7a-9d1d42521bca";  // Thay API Key của bạn
 
 const TELEGRAM_BOT_TOKEN = "8044801886:AAEyfSG2Fmnf3M_clN64hEIHhS9P0-D094c";  // Thay bằng token từ BotFather
 const CHAT_ID = "5710130520";  // Thay bằng ID user hoặc nhóm
@@ -189,7 +189,7 @@ const saveSentData = (sentData) => {
 // };
 
 // Lên lịch chạy lúc 00:00 mỗi ngày
-cron.schedule("20 19 * * *", () => {  // 16h30 UTC = 23h30 VN
+cron.schedule("25 19 * * *", () => {  // 16h30 UTC = 23h30 VN
     console.log("🕦 Xóa dữ liệu cũ lúc", new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }));
     cleanOldSentData(sentData);
     console.log("✅ Đã xóa dữ liệu!");
@@ -244,7 +244,7 @@ let isFetching = false;
 // });
 
 
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/3 * * * *", async () => {
     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
 
     await fetchAllFundingRates();
