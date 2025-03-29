@@ -1,7 +1,7 @@
 import fs from 'fs';
 import cron from "node-cron";
 
-const API_KEY = "a9bd3851-2121-4c5d-be7a-9d1d42521bca";  // Thay API Key của bạn
+const API_KEY = "8f72096a-b39b-4913-8812-39b89240d2fd";  // Thay API Key của bạn
 
 const TELEGRAM_BOT_TOKEN = "8044801886:AAEyfSG2Fmnf3M_clN64hEIHhS9P0-D094c";  // Thay bằng token từ BotFather
 const CHAT_ID = "5710130520";  // Thay bằng ID user hoặc nhóm
@@ -28,7 +28,7 @@ let fetchedData = [];
 
 // Danh sách các API cần gọi
 const API_URLS = [
-    'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=BTCUSDT_PERP.A,ETHUSDT_PERP.A,XRPUSDT_PERP.A,BNBUSDT_PERP.A,SOLUSDT_PERP.A,USDCUSDT_PERP.A,DOGEUSDT_PERP.A,ADAUSDT_PERP.A,TRXUSDT_PERP.A,LINKUSDT_PERP.A,AVAXUSDT_PERP.A,XLMUSDT_PERP.A,TONUSDT_PERP.A,HBARUSDT_PERP.A,1000SHIBUSDT_PERP.A,SUIUSDT_PERP.A,DOTUSDT_PERP.A,LTCUSDT_PERP.A,BCHUSDT_PERP.A,OMUSDT_PERP.A',
+    // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=BTCUSDT_PERP.A,ETHUSDT_PERP.A,XRPUSDT_PERP.A,BNBUSDT_PERP.A,SOLUSDT_PERP.A,USDCUSDT_PERP.A,DOGEUSDT_PERP.A,ADAUSDT_PERP.A,TRXUSDT_PERP.A,LINKUSDT_PERP.A,AVAXUSDT_PERP.A,XLMUSDT_PERP.A,TONUSDT_PERP.A,HBARUSDT_PERP.A,1000SHIBUSDT_PERP.A,SUIUSDT_PERP.A,DOTUSDT_PERP.A,LTCUSDT_PERP.A,BCHUSDT_PERP.A,OMUSDT_PERP.A',
     // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=UNIUSDT_PERP.A,XMRUSDT_PERP.A,NEARUSDT_PERP.A,APTUSDT_PERP.A,1000PEPEUSDT_PERP.A,FETUSDT_PERP.A,ICPUSDT_PERP.A,ONDOUSDT_PERP.A,AAVEUSDT_PERP.A,ETCUSDT_PERP.A,POLUSDT_PERP.A,TRUMPUSDT_PERP.A,VETUSDT_PERP.A,TAOUSDT_PERP.A,ENAUSDT_PERP.A,RENDERUSDT_PERP.A,TIAUSDT_PERP.A,FILUSDT_PERP.A,KASUSDT_PERP.A,ATOMUSDT_PERP.A',
     // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=ARBUSDT_PERP.A,ALGOUSDT_PERP.A,SUSDT_PERP.A,IPUSDT_PERP.A,JUPUSDT_PERP.A,DEXEUSDT_PERP.A,OPUSDT_PERP.A,MOVEUSDT_PERP.A,IMXUSDT_PERP.A,WLDUSDT_PERP.A,1000BONKUSDT_PERP.A,MKRUSDT_PERP.A,INJUSDT_PERP.A,STXUSDT_PERP.A,GRTUSDT_PERP.A,SEIUSDT_PERP.A,THETAUSDT_PERP.A,QNTUSDT_PERP.A,LDOUSDT_PERP.A,FORMUSDT_PERP.A',
     // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=EOSUSDT_PERP.A,BERAUSDT_PERP.A,GALAUSDT_PERP.A,CAKEUSDT_PERP.A,SANDUSDT_PERP.A,XTZUSDT_PERP.A,JTOUSDT_PERP.A,IOTAUSDT_PERP.A,BSVUSDT_PERP.A,FLOWUSDT_PERP.A,CRVUSDT_PERP.A,1000FLOKIUSDT_PERP.A,KAIAUSDT_PERP.A,SUPERUSDT_PERP.A,ENSUSDT_PERP.A,PYTHUSDT_PERP.A,JASMYUSDT_PERP.A,1000SATSUSDT_PERP.A,SPXUSDT_PERP.A,ZECUSDT_PERP.A',
@@ -46,7 +46,7 @@ const API_URLS = [
     // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=ARPAUSDT_PERP.A,BAKEUSDT_PERP.A,MOODENGUSDT_PERP.A,HIPPOUSDT_PERP.A,HFTUSDT_PERP.A,MAGICUSDT_PERP.A,MAVUSDT_PERP.A,ACEUSDT_PERP.A,SIRENUSDT_PERP.A,SYSUSDT_PERP.A,ATAUSDT_PERP.A,DEGOUSDT_PERP.A,DUSDT_PERP.A,BMTUSDT_PERP.A,NKNUSDT_PERP.A,AVAAIUSDT_PERP.A,SWARMSUSDT_PERP.A,NFPUSDT_PERP.A,ALPHAUSDT_PERP.A,THEUSDT_PERP.A',
     // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=MBOXUSDT_PERP.A,LISTAUSDT_PERP.A,REZUSDT_PERP.A,ZEREBROUSDT_PERP.A,TLMUSDT_PERP.A,SYNUSDT_PERP.A,GTCUSDT_PERP.A,LEVERUSDT_PERP.A,FIDAUSDT_PERP.A,HOOKUSDT_PERP.A,BADGERUSDT_PERP.A,PHBUSDT_PERP.A,SLERFUSDT_PERP.A,SWELLUSDT_PERP.A,HEIUSDT_PERP.A,RDNTUSDT_PERP.A,CHILLGUYUSDT_PERP.A,BRUSDT_PERP.A,1000RATSUSDT_PERP.A,VICUSDT_PERP.A',
     // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=EPICUSDT_PERP.A,GHSTUSDT_PERP.A,REIUSDT_PERP.A,SANTOSUSDT_PERP.A,VINEUSDT_PERP.A,NEIROETHUSDT_PERP.A,MAVIAUSDT_PERP.A,PERPUSDT_PERP.A,LOKAUSDT_PERP.A,FLMUSDT_PERP.A,AVAUSDT_PERP.A,KOMAUSDT_PERP.A,QUICKUSDT_PERP.A,COSUSDT_PERP.A,BSWUSDT_PERP.A,JELLYJELLYUSDT_PERP.A,CHESSUSDT_PERP.A,VOXELUSDT_PERP.A,MYROUSDT_PERP.A,PIPPINUSDT_PERP.A',
-    // 'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=TOKENUSDT_PERP.A,TUTUSDT_PERP.A,NULSUSDT_PERP.A,FIOUSDT_PERP.A,BIDUSDT_PERP.A,TROYUSDT_PERP.A,VIDTUSDT_PERP.A,ALPACAUSDT_PERP.A,RAYSOLUSDT_PERP.A,1000CHEEMSUSDT_PERP.A,BROCCOLIF3BUSDT_PERP.A,DEFIUSDT_PERP.A,VELODROMEUSDT_PERP.A,1000XUSDT_PERP.A,1000WHYUSDT_PERP.A,1000CATUSDT_PERP.A,BROCCOLI714USDT_PERP.A,BTCDOMUSDT_PERP.A',
+    'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=TOKENUSDT_PERP.A,TUTUSDT_PERP.A,NULSUSDT_PERP.A,FIOUSDT_PERP.A,BIDUSDT_PERP.A,TROYUSDT_PERP.A,VIDTUSDT_PERP.A,ALPACAUSDT_PERP.A,RAYSOLUSDT_PERP.A,1000CHEEMSUSDT_PERP.A,BROCCOLIF3BUSDT_PERP.A,DEFIUSDT_PERP.A,VELODROMEUSDT_PERP.A,1000XUSDT_PERP.A,1000WHYUSDT_PERP.A,1000CATUSDT_PERP.A,BROCCOLI714USDT_PERP.A,BTCDOMUSDT_PERP.A',
     ];
 
 // Hàm gửi tin nhắn đến Telegram
@@ -166,7 +166,7 @@ const saveSentData = (sentData) => {
 };
 
 
-// 🕒 Xóa dữ liệu cũ quá 24 giờ
+// // 🕒 Xóa dữ liệu cũ quá 24 giờ
 // const cleanOldSentData = (sentData) => {
 //     const now = Date.now();
 //     Object.keys(sentData).forEach((symbol) => {
@@ -176,32 +176,69 @@ const saveSentData = (sentData) => {
 //     });
 //     saveSentData(sentData);
 // };
+const cleanOldSentData = (sentData) => {
+    const now = Date.now();
 
-//
+    // Lấy timestamp của 20:35 hôm nay
+    const eveningToday = new Date();
+    eveningToday.setHours(20, 40, 0, 0);
+    const eveningTimestamp = eveningToday.getTime();
+
+    // Nếu hiện tại đã qua 20:35, thì vẫn giữ 20:35 hôm nay
+    // Nếu hiện tại chưa đến 20:35, lấy 20:35 ngày hôm trước
+    if (now < eveningTimestamp) {
+        eveningToday.setDate(eveningToday.getDate() - 1);
+    }
+
+    const cutoffTimestamp = eveningToday.getTime();
+
+    console.log(`🕒 Kiểm tra và xóa dữ liệu trước ${new Date(cutoffTimestamp).toLocaleString("vi-VN")}`);
+
+    // Duyệt qua danh sách và xóa dữ liệu cũ hơn 20:35 ngày trước
+    Object.keys(sentData).forEach((symbol) => {
+        if (sentData[symbol] < cutoffTimestamp) {
+            console.log(`❌ Xóa dữ liệu của ${symbol} (Lưu lúc: ${new Date(sentData[symbol]).toLocaleString("vi-VN")})`);
+            delete sentData[symbol];
+        }
+    });
+
+    saveSentData(sentData);
+};
+
+
+const scheduleCleanup = () => {
+    setInterval(() => {
+        const now = new Date();
+        if (now.getHours() === 20 && now.getMinutes() === 35) {
+            console.log("🔄 Đang thực hiện xóa dữ liệu lúc 20:35...");
+            let sentData = loadSentData();
+            cleanOldSentData(sentData);
+        }
+    }, 60 * 1000); // Kiểm tra mỗi phút
+};
+
+// Chạy lịch trình ngay khi khởi động
+scheduleCleanup();
+
+
+
 // const cleanOldSentData = (sentData) => {
 //     const now = Date.now();
+//
+//     // Tính timestamp của 20:00 hôm nay
+//     const eveningToday = new Date();
+//     eveningToday.setHours(20, 0, 0, 0);  // Đặt giờ thành 20:00 hôm nay
+//     const eveningTimestamp = eveningToday.getTime();
+//
+//     // Duyệt qua các key trong sentData
 //     Object.keys(sentData).forEach((symbol) => {
-//         if (now - sentData[symbol] > 24 * 60 * 60 * 1000) {  // Xóa sau 24 giờ
+//         if (sentData[symbol] < eveningTimestamp) {
 //             delete sentData[symbol];
 //         }
 //     });
+//
 //     saveSentData(sentData);
 // };
-
-// Lên lịch chạy lúc 00:00 mỗi ngày
-cron.schedule("45 19 * * *", () => {  // 16h30 UTC = 23h30 VN
-    console.log("🕦 Xóa dữ liệu cũ lúc", new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" }));
-    cleanOldSentData(sentData);
-    console.log("✅ Đã xóa dữ liệu!");
-});
-let sentData = {}; // Khai báo sentData ở phạm vi toàn cục
-
-// Hàm xóa toàn bộ dữ liệu
-const cleanOldSentData = () => {
-    console.log("🚀 Đang xóa tất cả dữ liệu cũ...");
-    sentData = {};  // Xóa toàn bộ dữ liệu
-    saveSentData(sentData);
-};
 
 
 // 📩 Gửi dữ liệu lên Telegram nhưng kiểm tra trùng trước
@@ -230,7 +267,6 @@ const sendNegativeValuesToTelegram = async (negativeValues) => {
     }
 };
 
-
 let isFetching = false;
 
 // cron.schedule("45 * * * *", async () => {
@@ -244,11 +280,11 @@ let isFetching = false;
 // });
 
 
-cron.schedule("*/3 * * * *", async () => {
+cron.schedule("*/2 * * * *", async () => {
     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
 
     await fetchAllFundingRates();
-    const negativeValues = fetchedData.filter(item => item.value <= -0);
+    const negativeValues = fetchedData.filter(item => item.value <= -0.5);
     await sendNegativeValuesToTelegram(negativeValues);
 
     console.log("✅ Đã gửi dữ liệu!");
@@ -258,6 +294,6 @@ cron.schedule("*/3 * * * *", async () => {
 
 (async () => {
     await fetchAllFundingRates();
-    const negativeValues = fetchedData.filter(item => item.value <= -0);  // Lọc dữ liệu
+    const negativeValues = fetchedData.filter(item => item.value <= -0.5);  // Lọc dữ liệu
     sendNegativeValuesToTelegram(negativeValues);
 })();
