@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="695595cd-11ea-4578-9b80-70ef9e2cfdf9" name="Changes" comment="git commit -m &quot;first commit&quot;" />
+    <list default="true" id="695595cd-11ea-4578-9b80-70ef9e2cfdf9" name="Changes" comment="git commit -m &quot;first commit&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentData.json" beforeDir="false" afterPath="$PROJECT_DIR$/sentData.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,18 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "mcwar0501"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mcwar0501&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:mcwar0501/Funding_Rate.git",
-    "accountId": "b15659e5-12d2-44c5-8256-85b47c155ee5"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:mcwar0501/Funding_Rate.git&quot;,
+    &quot;accountId&quot;: &quot;b15659e5-12d2-44c5-8256-85b47c155ee5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -81,7 +85,8 @@
       <updated>1742940080615</updated>
       <workItem from="1742940081753" duration="18501000" />
       <workItem from="1742978308099" duration="2147000" />
-      <workItem from="1743066701525" duration="5853000" />
+      <workItem from="1743066701525" duration="6451000" />
+      <workItem from="1743246863433" duration="1603000" />
     </task>
     <servers />
   </component>
