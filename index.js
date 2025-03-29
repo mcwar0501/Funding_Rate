@@ -181,7 +181,7 @@ const cleanOldSentData = (sentData) => {
 
     // Lấy timestamp của 20:35 hôm nay
     const eveningToday = new Date();
-    eveningToday.setHours(21, 0, 0, 0);
+    eveningToday.setHours(21, 10, 0, 0);
     const eveningTimestamp = eveningToday.getTime();
 
     // Nếu hiện tại đã qua 20:35, thì vẫn giữ 20:35 hôm nay
