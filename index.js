@@ -270,7 +270,7 @@ const sendNegativeValuesToTelegram = async (negativeValues) => {
 
 let isFetching = false;
 
-cron.schedule("45 * * * *", async () => {
+cron.schedule("48 * * * *", async () => {
     console.log("🔄 Đang chạy vào", new Date().toLocaleTimeString());
 
     await fetchAllFundingRates();
