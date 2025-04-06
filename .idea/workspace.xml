@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="695595cd-11ea-4578-9b80-70ef9e2cfdf9" name="Changes" comment="git commit -m &quot;first commit&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fetchData.js" beforeDir="false" afterPath="$PROJECT_DIR$/fetchData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sentData.json" beforeDir="false" afterPath="$PROJECT_DIR$/sentData.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +86,7 @@
       <workItem from="1743066701525" duration="6451000" />
       <workItem from="1743246863433" duration="12718000" />
       <workItem from="1743937656436" duration="7172000" />
-      <workItem from="1743950480285" duration="17717000" />
+      <workItem from="1743950480285" duration="18323000" />
     </task>
     <servers />
   </component>

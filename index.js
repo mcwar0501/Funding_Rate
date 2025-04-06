@@ -356,8 +356,7 @@ const API_URLS = [
     'https://api.coinalyze.net/v1/predicted-funding-rate?symbols=FUNUSDT_PERP.A,MLNUSDT_PERP.A,GUNUSDT_PERP.A,ATHUSDT_PERP.A',
 ];
 
-const from = 1742918400 ;
-const to = from ;
+
 
 
 const fetchLongShortRatioData = async (symbol) => {
