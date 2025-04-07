@@ -697,7 +697,7 @@ const sendNegativeValuesToTelegram = async (negativeValues) => {
         // tỷ lệ thay đổi
         const percentageChange = ((close - open) / open) * 100;
         const percentageVolume = ((buy - (volume-buy)) / (volume-buy)) * 100;
-        const trend = percentageChange > 0 ? "🔺" : "🔻"; // Điều kiện để xác định "tăng" hay "giảm"
+        const trend = percentageChange > 0 ? "🚀" : "🔻"; // Điều kiện để xác định "tăng" hay "giảm"
 
 
         //liquidation
